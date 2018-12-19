@@ -1,0 +1,9 @@
+{{#each announces}}
+<p>Titulo: {{this.title}}</p>
+<p>Descricao: {{this.description}}</p>
+<p>Valor: {{this.value}}</p>
+<form action="/admin/{{this._id}}" method="post">
+  <input type="submit" name="buttonHandler" value = "Aceitar"/>
+  <input type="submit" name="buttonHandler" value = "Recusar"/>
+</form>
+{{/each}}

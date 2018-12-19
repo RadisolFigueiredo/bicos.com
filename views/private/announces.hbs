@@ -1,0 +1,41 @@
+<form action="/announces" method="post">
+  <label for="title-input"> Titulo do anuncio </label>
+  <input type="text" name="title" id="title-input">
+  <label for="description-input"> Descricao do anuncio </label>
+  <input type="text" name="description" id="description-input">
+  <label for="value-input"> Valor </label>
+  <input type="number" name="value" id="value-input">
+  <label for="location-input"> Localizacao </label>
+  <select name="location">
+    <option value="São Paulo">São Paulo</option>
+    <option value="Rio de Janeiro">Rio de Janeiro</option>
+    <option value="Brasília">Brasília</option>
+    <option value="Espírito Santo">Espírito Santo</option>
+  </select>
+ <input type="submit" name="buttonHandler" value = "Criar"/>
+</form>
+{{#if message}}
+<p>{{message}}</p>
+{{/if}}
+{{#each announces}}
+<div style="padding-bottom: 5px;">
+  <h1>Titulo: {{this.title}}</h1>
+  <p>Valor: R$ {{this.value}}</p>
+  <p>Localizacao: {{this.location}}</p>
+  {{!-- //add agora na revisão linha 26--}}
+  {{#if this.employerId}}
+  <p>Nome do contratado: {{this.employerId.name}}</p>
+  <p>Telefone do contratado: {{this.employerId.phone}}</p>
+  {{!-- //add agora na revisão linha 30--}}
+  {{/if}}
+  <a href="/announce/{{this._id}}">Detalhes do anuncio</a>
+{{#if this.show}}
+  <form action="/announces/{{this._id}}/{{this.employerId._id}}" method="post">
+  {{#if this.employerId}}
+    <input type="submit" name="buttonHandler" value = "Remover Empregado"/>
+  {{/if}}
+    <input type="submit" name="buttonHandler" value = "Finalizar Anuncio"/>
+  </form>
+{{/if}}
+</div>
+{{/each}}

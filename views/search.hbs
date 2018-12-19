@@ -1,0 +1,13 @@
+{{#each announces}}
+  {{#unless this.employerId}}
+  <div style="padding-bottom: 5px;">
+    <h1>{{this.title}}</h1>
+    <p>{{this.value}}</p>
+    <p>{{this.location}}</p>
+    <a href="/announce/{{this._id}}">Detalhes do anuncio</a>
+  </div>
+  {{/unless}}
+{{/each}}
+{{#if message}}
+  <p>{{message}}</p>
+{{/if}}

@@ -1,0 +1,13 @@
+{{#each announces}}
+  <p>Titulo: {{this.title}}</p>
+  <p>Valor: R$ {{this.value}}</p>
+  <p>Localizacao: {{this.location}}</p>
+  <p>Nome do contratante: {{this.creatorId.name}}</p>
+  <p>Telefone do contratante: {{this.creatorId.phone}}</p>
+  <a href="/announce/{{this._id}}">Detalhes do anuncio</a>
+  {{#if this.show}}
+    <form action="/appointments/{{this._id}}/{{this.employerId}}" method="post">
+      <input type="submit" name="buttonHandler" value = "Desistir"/>
+    </form>
+  {{/if}}
+{{/each}}

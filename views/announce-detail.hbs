@@ -1,0 +1,16 @@
+<div style="padding-bottom: 5px;">
+  <h1>Titulo: {{announce.title}}</h1>
+  <p>Descricao: {{announce.description}}</p>
+  <p>Valor: R$ {{announce.value}}</p>
+  <p>Localizacao: {{announce.location}}</p>
+  {{#if userId}}
+  <form action="/announce/{{announce._id}}" method="post">
+    <input type="submit" name="buttonHandler" value = "Aplicar"/>
+  </form>
+  {{/if}}
+  {{#if message}}
+    <p>{{message}}</p>
+  {{/if}} 
+</div>
+
+<button onclick="goBack()">Voltar</button>

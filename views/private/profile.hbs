@@ -1,0 +1,16 @@
+<p>Meu perfil</p>
+<br>
+<p>Nome: {{ userName }}</p>
+<p>E-mail: {{ userEmail }}</p>
+<p>Telefone: {{ userPhone }}</p>
+<br>
+{{#each announces}}
+<p>Titulo: {{this.title}}</p>
+  {{#each this.arrayOfCandidates}}
+  <p>Nome do trabalhador: {{this.name}}</p>
+  <form action="/profile/{{../this._id}}/{{this._id}}" method="post">
+    <input type="submit" name="buttonHandler" value = "Aceitar"/>
+    <input type="submit" name="buttonHandler" value = "Recusar"/>
+  </form>
+  {{/each}}
+{{/each}}

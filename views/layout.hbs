@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+    crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <link rel='stylesheet' href='/stylesheets/reset.css' />
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel="shortcut icon" type="image/png" href="images/group (2).png" />
+
+</head>
+
+<body>
+  <nav>
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="nav-logo">
+        <img src="https://www.iconsdb.com/icons/preview/white/bird-2-xxl.png" alt="bird icon" width="20px" height="20px">
+        <a href="/">Bicos.com</a>
+      </div>
+      <div class="nav-search-bar w-75">
+        <form action="/search" method="get">
+          <select class="color" name="location">
+            <option value="São Paulo">São Paulo</option>
+            <option value="Rio de Janeiro">Rio de Janeiro</option>
+            <option value="Brasília">Brasília</option>
+            <option value="Espírito Santo">Espírito Santo</option>
+          </select>
+          <input type="text" name="content" placeholder="Pesquisar..." class="w-75">
+          <button type="submit" class="color fas fa-search" value="Submit">
+        </form>
+      </div>
+      <ul>
+        {{#if isUserLoggedIn }}
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{currentUserInfo.name}}
+            <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            {{#if currentUserInfo.isAdmin }}
+              <li><a href="/admin">Administrador</a></li>
+            {{/if}}
+            <li><a href="/profile">Perfil</a></li>
+            <li><a href="/announces">Meus anuncios</a></li>
+            <li><a href="/appointments">Meus compromissos</a></li>
+            <li><a href="/logout">Sair</a></li>
+          </ul>
+        </div>
+        {{else}}
+        <div class="auth-menu">
+          <a href="/signup"> Cadastre-se </a>
+          <a href="/login"> Login </a>
+        </div>
+        {{/if}}
+      </ul>
+    </div>
+  </nav>
+  {{{body}}}
+  <footer class=" d-flex justify-content-between">
+    <p class="left">Ⓒ 2018 Copyright Bicos.com</p>
+    <p class="right">Feito por pessoas que querem melhorar o mundo ♥</p>
+  </footer>
+  <script src='/javascripts/script.js'></script>
+</body>
+
+</html>
